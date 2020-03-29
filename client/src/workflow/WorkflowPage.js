@@ -17,11 +17,12 @@ class WorkflowPage extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = 
+    this.state = {
       // state of each section is saved here so they persist as user switches pivot
       'travelAtEvent': {}
     }
 
+    this.travelAtEventEmi = 0
   }
 
   handleClickRevisitIntroduction = () => {
@@ -29,7 +30,7 @@ class WorkflowPage extends React.Component {
   }
 
   recordEmissionFromSection = (sectionName, emissionAmount) => {
-    this.travelAtEvent = emissionAmount // TODO generalize
+    this.travelAtEventEmi = emissionAmount // TODO generalize
     console.log('parent, sectionName', sectionName)
     console.log('parent, emissionAmount', emissionAmount)
   }
@@ -56,6 +57,7 @@ class WorkflowPage extends React.Component {
             <TravelAtEvent 
               initState={this.state.travelAtEvent}
               saveSectionState={this.saveSectionState.bind(this, 'travelAtEvent')}
+              recordEmissionFromSection={this.recordEmissionFromSection.bind(this, 'travelAtEvent')}
             />
           </PivotItem>
 
@@ -81,6 +83,7 @@ class WorkflowPage extends React.Component {
 
           <PivotItem headerText="Results">
             <Results 
+              travelAtEventEmi={this.travelAtEventEmi}
             />
           </PivotItem>
 

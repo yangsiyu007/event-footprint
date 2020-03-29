@@ -87,6 +87,8 @@ class TravelAtEvent extends React.Component {
 
     const travel_local_emi = travel_local_car_emi + travel_local_bus_emi + travel_local_lightrail_emi
 
+    this.props.recordEmissionFromSection(travel_local_emi)
+
     const numTripsSection = (
       <Stack tokens={{ childrenGap: 15 }}>
         <TextField

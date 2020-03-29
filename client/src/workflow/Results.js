@@ -8,7 +8,7 @@ class Results extends React.Component {
 
   render() {
     return (
-        <div>Travel at event</div>
+        <div>Travel at event: {this.props.travelAtEventEmi}</div>
     )
   }
 }
