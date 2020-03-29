@@ -43,9 +43,6 @@ class TravelAtEvent extends React.Component {
   }
 
   onChange = (e) => {
-    console.log(e.target.name)
-    console.log(e.target.value)
-
     const target = e.target
     const value = parseFloat(target.value) ? parseFloat(target.value) : 0
     const name = target.name

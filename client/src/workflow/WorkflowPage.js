@@ -22,7 +22,13 @@ class WorkflowPage extends React.Component {
       'travelAtEvent': {}
     }
 
+    this.travelToEventEmi = 0
     this.travelAtEventEmi = 0
+    this.accomEmi = 0
+    this.mealsEmi = 0
+    this.spacesEmi = 0
+    this.materialsServicesEmi = 0
+  
   }
 
   handleClickRevisitIntroduction = () => {
@@ -30,9 +36,28 @@ class WorkflowPage extends React.Component {
   }
 
   recordEmissionFromSection = (sectionName, emissionAmount) => {
-    this.travelAtEventEmi = emissionAmount // TODO generalize
-    console.log('parent, sectionName', sectionName)
-    console.log('parent, emissionAmount', emissionAmount)
+    switch (sectionName) {
+      case 'travelToEvent':
+        this.travelToEventEmi = emissionAmount
+        break
+      case 'travelAtEvent':
+        this.travelAtEventEmi = emissionAmount
+        break
+      case 'accom': 
+        this.accomEmi = emissionAmount
+        break
+      case 'meals':
+        this.mealsEmi = emissionAmount
+        break
+      case 'spaces':
+        this.spacesEmi = emissionAmount
+        break
+      case 'materialsServices':
+        this.materialsServicesEmi = emissionAmount
+        break
+      default:
+        console.warn('WorkflowPage, recordEmissionFromSection, unknown section name: ', sectionName)
+    }
   }
 
   saveSectionState = (sectionName, sectionState) => {
@@ -83,7 +108,12 @@ class WorkflowPage extends React.Component {
 
           <PivotItem headerText="Results">
             <Results 
+              travelToEventEmi={this.travelToEventEmi}
               travelAtEventEmi={this.travelAtEventEmi}
+              accomEmi={this.accomEmi}
+              mealsEmi={this.mealsEmi}
+              spacesEmi={this.spacesEmi}
+              materialsServicesEmi={this.materialsServicesEmi}
             />
           </PivotItem>
 
