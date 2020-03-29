@@ -1,8 +1,24 @@
-import React, { Component } from "react"
+import React from "react"
 
-class App extends Component {
+import WelcomePage from './WelcomePage'
+import WorkflowPage from './workflow/WorkflowPage'
+
+
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {showWorkflowPage: false}
+  }
+
+  showWorkflowPage = (show) => {
+    this.setState({showWorkflowPage: show})
+  }
+
   render() {
-    return <div>HELLO HELLO</div>;
+    if (this.state.showWorkflowPage) {
+      return <WorkflowPage showWorkflowPage={this.showWorkflowPage}/>
+    }
+    return <WelcomePage showWorkflowPage={this.showWorkflowPage}/>
   }
 }
 
