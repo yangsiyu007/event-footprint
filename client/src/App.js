@@ -7,7 +7,9 @@ import WorkflowPage from './workflow/WorkflowPage'
 class App extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {showWorkflowPage: false}
+    this.state = {
+      showWorkflowPage: false
+    }
   }
 
   showWorkflowPage = (show) => {
