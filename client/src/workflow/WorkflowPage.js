@@ -2,7 +2,8 @@ import React from "react"
 import { Pivot, PivotItem, PivotLinkSize } from 'office-ui-fabric-react/lib/Pivot'
 import { DefaultButton } from 'office-ui-fabric-react'
 import TravelToEvent from './TravelToEvent'
-import TravelAtEvent  from './TravelAtEvent'
+import TravelAtEvent from './TravelAtEvent'
+import Results from './Results'
 
 const pageStyle = { 
   paddingLeft: 30, 
@@ -16,25 +17,26 @@ class WorkflowPage extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      "travel_local_total_emi": 0
+    this.state = 
+      // state of each section is saved here so they persist as user switches pivot
+      'travelAtEvent': {}
     }
+
   }
 
   handleClickRevisitIntroduction = () => {
     this.props.showWorkflowPage(false)
   }
 
-  onChange = (e) => {
-    console.log(e.target.name)
-    console.log(e.target.value)
+  recordEmissionFromSection = (sectionName, emissionAmount) => {
+    this.travelAtEvent = emissionAmount // TODO generalize
+    console.log('parent, sectionName', sectionName)
+    console.log('parent, emissionAmount', emissionAmount)
+  }
 
-    const target = e.target
-    const value = parseFloat(target.value) ? parseFloat(target.value) : 0
-    const name = target.name
-
+  saveSectionState = (sectionName, sectionState) => {
     this.setState({
-      [name]: value
+      [sectionName]: sectionState
     })
   }
 
@@ -46,8 +48,15 @@ class WorkflowPage extends React.Component {
 
         <Pivot linkSize={PivotLinkSize.large}>
 
-          <PivotItem headerText="Travel">
-            <TravelAtEvent />
+          <PivotItem headerText="Travel to event">
+            <TravelToEvent />
+          </PivotItem>
+
+          <PivotItem headerText="Travel at event">
+            <TravelAtEvent 
+              initState={this.state.travelAtEvent}
+              saveSectionState={this.saveSectionState.bind(this, 'travelAtEvent')}
+            />
           </PivotItem>
 
           <PivotItem headerText="Accomodation">
@@ -71,7 +80,8 @@ class WorkflowPage extends React.Component {
           </PivotItem>
 
           <PivotItem headerText="Results">
-
+            <Results 
+            />
           </PivotItem>
 
         </Pivot>
