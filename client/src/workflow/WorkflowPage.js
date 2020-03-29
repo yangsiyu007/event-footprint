@@ -9,19 +9,23 @@ import { Stack } from 'office-ui-fabric-react/lib/Stack'
 import { Text } from 'office-ui-fabric-react/lib/Text'
 
 
-const sectionHeaderStyles = {
+const sectionHeaderStyle = {
   root: { marginTop: 30, marginBottom: 10 }
 }
 
-const sectionSubtitleSytles = {
+const sectionSubtitleStyle = {
   root: { marginBottom: 20 }
 }
 
-const sectionStyles = {
+const sectionStyle = {
   root: { marginTop: 30 }
 }
 
-const pageStyles = { 
+const headerColStyle = {
+  root: { width: 130 }
+}
+
+const pageStyle = { 
   paddingLeft: 30, 
   paddingRight: 30,
   paddingTop: 10
@@ -75,8 +79,8 @@ class WorkflowPage extends React.Component {
 
   const travelSection = (
     <div>
-      <Text block variant='large' styles={sectionHeaderStyles}>Local Travel at Event</Text>
-      <Text block styles={sectionSubtitleSytles}>Travel associated with attending the event from their accomodation</Text>
+      <Text block variant='large' styles={sectionHeaderStyle}>Local Travel at Event</Text>
+      <Text block styles={sectionSubtitleStyle}>Travel associated with attending the event from their accomodation</Text>
 
       <Stack tokens={{ childrenGap: 15 }}>
         <TextField
@@ -104,66 +108,79 @@ class WorkflowPage extends React.Component {
         />
       </Stack>
 
-      <Stack horizontal styles={sectionStyles} tokens={{ childrenGap: 20 }}>
-        <Stack tokens={{ childrenGap: 10 }}>
-          <Text block>Transport mode</Text>
-          <Text block>Car</Text>
-          <Text block>Bus</Text>
-          <Text block>Light rail</Text>
-          <Text block>Total</Text>
+      <Stack styles={sectionStyle} tokens={{ childrenGap: 10 }}>
+        <Stack horizontal >
+          <Text block styles={headerColStyle} >Transport mode</Text>
+          <Text block styles={headerColStyle} >% trips</Text>
+          <Text block styles={headerColStyle} >Average 1-way distance (miles)</Text>
         </Stack>
 
-        <Stack tokens={{ childrenGap: 10 }}>
-          <Text block>% trips</Text>
-          <TextField
+        <Stack horizontal >
+         <Text block styles={headerColStyle} >Car</Text>
+         <TextField
             name="travel_local_car_percent"
             value={this.state.travel_local_car_percent}
             onChange={this.onChange}
-            styles={{ fieldGroup: { width: 100 } }}
+            styles={{ fieldGroup: { width: 100 }, root: { marginRight: 30} }}
           />
-          <TextField
-            name="travel_local_bus_percent"
-            value={this.state.travel_local_bus_percent}
-            onChange={this.onChange}
-            styles={{ fieldGroup: { width: 100 } }}
-          />
-          <TextField
-            name="travel_local_lightrail_percent"
-            value={this.state.travel_local_lightrail_percent}
-            onChange={this.onChange}
-            styles={{ fieldGroup: { width: 100 } }}
-          />
-          <TextField
-            name="travel_local_total_percent"
-            value={this.state.travel_local_total_percent}
-            onChange={this.onChange}
-            styles={{ fieldGroup: { width: 100 } }}
-          />
-        </Stack>
-
-        <Stack tokens={{ childrenGap: 10 }}>
-          <Text block>Average 1-way distance (miles)</Text>
           <TextField
             name="travel_local_car_distance"
             value={this.state.travel_local_car_distance}
             onChange={this.onChange}
-            styles={{ fieldGroup: { width: 100 } }}
+            styles={{ fieldGroup: { width: 100 }, root: { marginRight: 30} }}
+          />
+        </Stack>
+
+        <Stack horizontal >
+          <Text block styles={headerColStyle} >Bus</Text>
+          <TextField
+            name="travel_local_bus_percent"
+            value={this.state.travel_local_bus_percent}
+            onChange={this.onChange}
+            styles={{ fieldGroup: { width: 100 }, root: { marginRight: 30} }}
           />
           <TextField
             name="travel_local_bus_distance"
             value={this.state.travel_local_bus_distance}
             onChange={this.onChange}
-            styles={{ fieldGroup: { width: 100 } }}
+            styles={{ fieldGroup: { width: 100 }, root: { marginRight: 30} }}
           />
+        </Stack>
 
+        <Stack horizontal>
+          <Text block styles={headerColStyle} >Light rail</Text>
+          <TextField
+            name="travel_local_lightrail_percent"
+            value={this.state.travel_local_lightrail_percent}
+            onChange={this.onChange}
+            styles={{ fieldGroup: { width: 100 }, root: { marginRight: 30} }}
+          />
           <TextField
             name="travel_local_lightrail_distance"
             value={this.state.travel_local_lightrail_distance}
             onChange={this.onChange}
-            styles={{ fieldGroup: { width: 100 } }}
+            styles={{ fieldGroup: { width: 100 }, root: { marginRight: 30} }}
           />
         </Stack>
+        
+          
+        <Stack horizontal>
+          <Text block styles={headerColStyle} >Total</Text>
+          <TextField
+            name="travel_local_total_percent" readOnly
+            value={this.state.travel_local_total_percent}
+            styles={{ fieldGroup: { width: 100 }, root: { marginRight: 30} }}
+          />
+          <TextField
+            name="travel_local_total_distance" readOnly
+            value={this.state.travel_local_total_distance}
+            styles={{ fieldGroup: { width: 100 }, root: { marginRight: 30} }}
+          />
+        </Stack>
+          
+          
       </Stack>
+
 
 
 
@@ -178,7 +195,7 @@ class WorkflowPage extends React.Component {
 
 
 
-    return <div style={pageStyles}>
+    return <div style={pageStyle}>
       <DefaultButton text="Revisit the introduction" onClick={this.handleClickRevisitIntroduction}/>
 
       <Pivot linkSize={PivotLinkSize.large}>
