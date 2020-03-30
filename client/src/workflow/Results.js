@@ -38,37 +38,37 @@ class Results extends React.Component {
 
           <Stack horizontal>
             <Text block styles={headerColStyle}>Travel to the event</Text>
-            <Text block>{this.props.travelToEventEmi}</Text>
+            <Text block>{this.props.travelToEventEmi.toFixed(2)}</Text>
           </Stack>
 
           <Stack horizontal>
             <Text block styles={headerColStyle}>Travel at the event</Text>
-            <Text block>{this.props.travelAtEventEmi}</Text>
+            <Text block>{this.props.travelAtEventEmi.toFixed(2)}</Text>
           </Stack>
 
           <Stack horizontal>
             <Text block styles={headerColStyle}>Accomodation</Text>
-            <Text block>{this.props.accomEmi}</Text>
+            <Text block>{this.props.accomEmi.toFixed(2)}</Text>
           </Stack>
 
           <Stack horizontal>
             <Text block styles={headerColStyle}>Meals</Text>
-            <Text block>{this.props.mealsEmi}</Text>
+            <Text block>{this.props.mealsEmi.toFixed(2)}</Text>
           </Stack>
 
           <Stack horizontal>
             <Text block styles={headerColStyle}>Meeting spaces</Text>
-            <Text block>{this.props.spacesEmi}</Text>
+            <Text block>{this.props.spacesEmi.toFixed(2)}</Text>
           </Stack>
 
           <Stack horizontal>
             <Text block styles={headerColStyle}>Materials and services</Text>
-            <Text block>{this.props.materialsServicesEmi}</Text>
+            <Text block>{this.props.materialsServicesEmi.toFixed(2)}</Text>
           </Stack>
 
           <Stack horizontal>
             <Text block styles={totalRowStyle}>Total</Text>
-            <Text block styles={totalRowStyle}>{totalEmi}</Text>
+            <Text block styles={totalRowStyle}>{totalEmi.toFixed(2)}</Text>
           </Stack>
 
         </Stack>

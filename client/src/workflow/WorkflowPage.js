@@ -19,6 +19,7 @@ class WorkflowPage extends React.Component {
 
     this.state = {
       // state of each section is saved here so they persist as user switches pivot
+      'travelToEvent': {},
       'travelAtEvent': {}
     }
 
@@ -70,12 +71,16 @@ class WorkflowPage extends React.Component {
 
     return (
       <div style={pageStyle}>
-        <DefaultButton text="Revisit the introduction" onClick={this.handleClickRevisitIntroduction}/>
+        <DefaultButton text="Restart" onClick={this.handleClickRevisitIntroduction}/>
 
         <Pivot linkSize={PivotLinkSize.large}>
 
           <PivotItem headerText="Travel to event">
-            <TravelToEvent />
+            <TravelToEvent 
+              initState={this.state.travelToEvent}
+              saveSectionState={this.saveSectionState.bind(this, 'travelToEvent')}
+              recordEmissionFromSection={this.recordEmissionFromSection.bind(this, 'travelToEvent')}
+            />
           </PivotItem>
 
           <PivotItem headerText="Travel at event">
