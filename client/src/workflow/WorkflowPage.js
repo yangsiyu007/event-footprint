@@ -1,6 +1,7 @@
 import React from "react"
 import { Pivot, PivotItem, PivotLinkSize } from 'office-ui-fabric-react/lib/Pivot'
 import { DefaultButton } from 'office-ui-fabric-react'
+import { Stack } from 'office-ui-fabric-react/lib/Stack'
 import TravelToEvent from './TravelToEvent'
 import TravelAtEvent from './TravelAtEvent'
 import Results from './Results'
@@ -69,60 +70,67 @@ class WorkflowPage extends React.Component {
 
   render() {
 
+    const tokens = {
+      stackTokens: {
+        childrenGap: 20
+      }
+    }
+
     return (
       <div style={pageStyle}>
         <DefaultButton text="Restart" onClick={this.handleClickRevisitIntroduction}/>
 
-        <Pivot linkSize={PivotLinkSize.large}>
+        <Stack horizontal tokens={tokens.stackTokens}>
 
-          <PivotItem headerText="Travel to event">
-            <TravelToEvent 
-              initState={this.state.travelToEvent}
-              saveSectionState={this.saveSectionState.bind(this, 'travelToEvent')}
-              recordEmissionFromSection={this.recordEmissionFromSection.bind(this, 'travelToEvent')}
-            />
-          </PivotItem>
+          <Pivot linkSize={PivotLinkSize.large}>
 
-          <PivotItem headerText="Travel at event">
-            <TravelAtEvent 
-              initState={this.state.travelAtEvent}
-              saveSectionState={this.saveSectionState.bind(this, 'travelAtEvent')}
-              recordEmissionFromSection={this.recordEmissionFromSection.bind(this, 'travelAtEvent')}
-            />
-          </PivotItem>
+            <PivotItem headerText="Travel to event">
+              <TravelToEvent 
+                initState={this.state.travelToEvent}
+                saveSectionState={this.saveSectionState.bind(this, 'travelToEvent')}
+                recordEmissionFromSection={this.recordEmissionFromSection.bind(this, 'travelToEvent')}
+              />
+            </PivotItem>
 
-          <PivotItem headerText="Accomodation">
+            <PivotItem headerText="Travel at event">
+              <TravelAtEvent 
+                initState={this.state.travelAtEvent}
+                saveSectionState={this.saveSectionState.bind(this, 'travelAtEvent')}
+                recordEmissionFromSection={this.recordEmissionFromSection.bind(this, 'travelAtEvent')}
+              />
+            </PivotItem>
 
-          </PivotItem>
+            <PivotItem headerText="Accomodation">
 
-          <PivotItem headerText="Meals">
+            </PivotItem>
 
-          </PivotItem>
+            <PivotItem headerText="Meals">
 
-          <PivotItem headerText="Meeting spaces">
-  
-          </PivotItem>
+            </PivotItem>
 
-          <PivotItem headerText="Waste">
+            <PivotItem headerText="Meeting spaces">
+    
+            </PivotItem>
 
-          </PivotItem>
+            <PivotItem headerText="Waste">
 
-          <PivotItem headerText="Materials and services">
+            </PivotItem>
 
-          </PivotItem>
+            <PivotItem headerText="Materials and services">
 
-          <PivotItem headerText="Results">
-            <Results 
-              travelToEventEmi={this.travelToEventEmi}
-              travelAtEventEmi={this.travelAtEventEmi}
-              accomEmi={this.accomEmi}
-              mealsEmi={this.mealsEmi}
-              spacesEmi={this.spacesEmi}
-              materialsServicesEmi={this.materialsServicesEmi}
-            />
-          </PivotItem>
+            </PivotItem>
+          </Pivot>
 
-        </Pivot>
+          <Results 
+            travelToEventEmi={this.travelToEventEmi}
+            travelAtEventEmi={this.travelAtEventEmi}
+            accomEmi={this.accomEmi}
+            mealsEmi={this.mealsEmi}
+            spacesEmi={this.spacesEmi}
+            materialsServicesEmi={this.materialsServicesEmi}
+          />
+
+        </Stack>
       </div>
     )
   }

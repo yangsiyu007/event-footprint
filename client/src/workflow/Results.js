@@ -27,7 +27,7 @@ class Results extends React.Component {
 
     return (
       <div>
-       <Text block variant='large' styles={sectionHeaderStyle}>Event totals</Text>
+       <Text block variant='large' styles={sectionHeaderStyle}>Your carbon receipt</Text>
 
         <Stack styles={sectionStyle} tokens={{ childrenGap: 10 }}>
 

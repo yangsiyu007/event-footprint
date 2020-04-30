@@ -1,5 +1,5 @@
 import React from "react"
-import { IStyleSet, FontWeights } from 'office-ui-fabric-react/lib/Styling'
+import { FontWeights } from 'office-ui-fabric-react/lib/Styling'
 import { TextField } from 'office-ui-fabric-react/lib/TextField'
 import { Stack } from 'office-ui-fabric-react/lib/Stack'
 import { Text } from 'office-ui-fabric-react/lib/Text'
@@ -401,7 +401,7 @@ class TravelToEvent extends React.Component {
       )
     })
     flightRows.push(
-      <Stack horizontal>
+      <Stack horizontal key="total">
         <Text block styles={headerColStyle} >Total</Text>
         {emptyCol}
         <TextField
@@ -446,7 +446,7 @@ class TravelToEvent extends React.Component {
         <Stack horizontal >
           <Text block styles={headerColStyle} >Transport mode to/from the airport</Text>
           <Text block styles={headerColStyle} >% trips</Text>
-          <Text block styles={headerColStyle} >Average <emph>round-trip</emph> distance (miles)</Text>
+          <Text block styles={headerColStyle} >Average <em>round-trip</em> distance (miles)</Text>
           <Text block styles={headerColStyle} > </Text>
           <Text block styles={headerColStyle} >Passenger miles</Text>
           <Text block styles={headerColStyle} >Emissions (tCO2e)</Text>
