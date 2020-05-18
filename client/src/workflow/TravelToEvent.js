@@ -96,7 +96,7 @@ class TravelToEvent extends React.Component {
   }
 
   componentDidMount() {
-    const initState = this.props.initState
+    const initState = this.props.getInitState()
     if (initState['attendees']) {
       this.setState(initState)
     }

@@ -1,5 +1,5 @@
 import React from "react"
-import { DefaultButton } from 'office-ui-fabric-react'
+import { DefaultButton, classNamesFunction, IStyle, TextField } from 'office-ui-fabric-react'
 import { Stack } from 'office-ui-fabric-react/lib/Stack'
 import { Text } from 'office-ui-fabric-react/lib/Text'
 import {  
@@ -19,6 +19,7 @@ import TravelToEvent from './TravelToEvent'
 import TravelAtEvent from './TravelAtEvent'
 import Results from './Results'
 
+
 const pageStyle = { 
   paddingLeft: 30, 
   paddingRight: 30,
@@ -29,6 +30,17 @@ const sectionHeaderStyle = {
   root: { marginBottom: 10 }
 }
 
+const stackItemStyles = {
+  root: {
+    alignItems: 'left',
+    display: 'flex'
+  }
+}
+
+const wizardStyles = {
+  width: '100%',
+  height: 1000
+}
 
 class WorkflowPage extends React.Component {
   constructor(props) {
@@ -195,7 +207,11 @@ class WorkflowPage extends React.Component {
         footerElement: firstFooter,
         wizardContent: {
           contentTitleElement: this.getContentTitleElement('Travel to event'),
-          content: <div>Not yet implemented</div>
+          content: <TravelToEvent 
+            getInitState={this.getInitState.bind(this, 'travelToEvent')}
+            saveSectionState={this.saveSectionState.bind(this, 'travelToEvent')}
+            recordEmissionFromSection={this.recordEmissionFromSection.bind(this, 'travelToEvent')}
+          />
         }
       },
       {
@@ -275,6 +291,24 @@ class WorkflowPage extends React.Component {
     this.props.showWorkflowPage(false)
   }
 
+  getPageState = (sectionName) => {
+    switch (sectionName) {
+      case 'travelToEvent':
+        return this.state.travelToEvent
+      default:
+        console.warn('getPageState default case hit')
+    }
+  }
+
+  getInitState = (sectionName) => {
+    switch (sectionName) {
+      case 'travelToEvent':
+        return this.state.travelToEvent
+      default:
+        console.warn('getInitState default case hit')
+    }
+  }
+
   recordEmissionFromSection = (sectionName, emissionAmount) => {
     switch (sectionName) {
       case 'travelToEvent':
@@ -319,25 +353,32 @@ class WorkflowPage extends React.Component {
         <DefaultButton text="Restart" onClick={this.handleClickRevisitIntroduction}/>
 
         <Stack horizontal tokens={tokens.stackTokens}>
+          <Stack.Item grow={4} styles={stackItemStyles}>
+            <div style={wizardStyles}>
+              <FullPageWizard
+                // If you need to support browsers that don't have Resize Observer like IE11 or Safari,
+                // please use a ponyfill like this.
+                wizardProps={{
+                  ...this.state.wizardProps,
+                  ...(typeof ResizeObserver === 'undefined' && { resizeObserverRef: ROPoly })
+                }}
+                title="Event"
+              />
+            </div>
+          </Stack.Item>
 
-          <FullPageWizard
-            // If you need to support browsers that don't have Resize Observer like IE11 or Safari,
-            // please use a ponyfill like this.
-            wizardProps={{
-              ...this.state.wizardProps,
-              ...(typeof ResizeObserver === 'undefined' && { resizeObserverRef: ROPoly })
-            }}
-            title="Event"
-          />
+          <Stack.Item grow styles={stackItemStyles}>
+            <Results 
+              travelToEventEmi={this.travelToEventEmi}
+              travelAtEventEmi={this.travelAtEventEmi}
+              accomEmi={this.accomEmi}
+              mealsEmi={this.mealsEmi}
+              spacesEmi={this.spacesEmi}
+              materialsServicesEmi={this.materialsServicesEmi}
+            />
+          </Stack.Item>
+          
 
-          <Results 
-            travelToEventEmi={this.travelToEventEmi}
-            travelAtEventEmi={this.travelAtEventEmi}
-            accomEmi={this.accomEmi}
-            mealsEmi={this.mealsEmi}
-            spacesEmi={this.spacesEmi}
-            materialsServicesEmi={this.materialsServicesEmi}
-          />
 
         </Stack>
       </div>
