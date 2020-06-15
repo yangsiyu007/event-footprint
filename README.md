@@ -27,7 +27,11 @@ In the project `.npmrc`, Make sure to specify the scope of the feed to @m365-adm
 In the `client` directory, `npm start`.
 
 
+## Deployment
 
+This [blog](https://www.jeff.wilcox.name/2017/02/azure-private-npm/#deploying-to-azure-app-service) details how to add environment variables in the Azure App Service's setting (or more advanced, connecting to a KeyVault) and use these to connect to the private npm feed using a custom script. Here is a [shortcut](https://blog.maartenballiauw.be/post/2015/10/13/working-with-a-private-npm-registry-in-azure-web-apps.html) to add the authentication tokens to the `.npmrc` that gets deployed. 
+
+- [ ] Remove the auth tokens from `.npmrc` and commit it (currently in `.gitignore`)
 
 
 

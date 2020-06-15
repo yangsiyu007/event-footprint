@@ -21,3 +21,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# deployment related - need to set up custom deployment script to exclude keys from these files
+.deployment
+.npmrc

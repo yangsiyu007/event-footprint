@@ -182,21 +182,6 @@ class WorkflowPage extends React.Component {
         />
       </>
     )
-
-    /****
-     * 
-     * <TravelToEvent 
-            initState={curState.travelToEvent}
-            saveSectionState={this.saveSectionState.bind(this, 'travelToEvent')}
-            recordEmissionFromSection={this.recordEmissionFromSection.bind(this, 'travelToEvent')}
-          />
-
-<TravelAtEvent 
-            initState={curState.travelAtEvent}
-            saveSectionState={this.saveSectionState.bind(this, 'travelAtEvent')}
-            recordEmissionFromSection={this.recordEmissionFromSection.bind(this, 'travelAtEvent')}
-          />
-     */
     
     return [
       {
@@ -222,7 +207,11 @@ class WorkflowPage extends React.Component {
         footerElement: inBetweenFooter,
         wizardContent: {
           contentTitleElement: this.getContentTitleElement('Travel at event'),
-          content: <div>Not yet implemented</div>
+          content: <TravelAtEvent 
+            getInitState={this.getInitState.bind(this, 'travelAtEvent')}
+            saveSectionState={this.saveSectionState.bind(this, 'travelAtEvent')}
+            recordEmissionFromSection={this.recordEmissionFromSection.bind(this, 'travelAtEvent')}
+          />
         }
       },
       {
@@ -304,6 +293,8 @@ class WorkflowPage extends React.Component {
     switch (sectionName) {
       case 'travelToEvent':
         return this.state.travelToEvent
+      case 'travelAtEvent':
+        return this.state.travelAtEvent
       default:
         console.warn('getInitState default case hit')
     }
