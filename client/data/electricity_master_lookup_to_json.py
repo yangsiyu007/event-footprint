@@ -20,5 +20,5 @@ for i, row in csv_table.iterrows():
 assert json_table['United States - NWPP'] == 0.0002972
 print(f'In JSON table, United States - NWPP is {json_table["United States - NWPP"]}')
 
-with open('electricity_master_lookup.json', 'w') as f:
+with open('../src/electricity_master_lookup.json', 'w') as f:
     json.dump(json_table, f, indent=2)

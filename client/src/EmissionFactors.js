@@ -32,11 +32,11 @@ const emissionFactors = {
 
     // Hotel sheet, column Q
     // Total FERA
-    electricity_uppper_upscale: 0.003187215,
-    electricity_upscale: 0.002452564,
-    electricity_midscale_w_food_beverage: 0.002304448,
-    electricity_midscale_wo_food_beverage: 0.00144377,
-    electricity_economy_and_budget: 0.001314663,
+    fera_uppper_upscale: 0.003187215,
+    fera_upscale: 0.002452564,
+    fera_midscale_w_food_beverage: 0.002304448,
+    fera_midscale_wo_food_beverage: 0.00144377,
+    fera_economy_and_budget: 0.001314663,
 
   }
 

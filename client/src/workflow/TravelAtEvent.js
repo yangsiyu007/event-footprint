@@ -1,9 +1,9 @@
 import React from "react"
-import { IStyleSet, FontWeights } from 'office-ui-fabric-react/lib/Styling'
-import { TextField } from 'office-ui-fabric-react/lib/TextField'
-import { Stack } from 'office-ui-fabric-react/lib/Stack'
-import { Text } from 'office-ui-fabric-react/lib/Text'
-import { emissionFactors } from '../EmissionFactors'
+import { IStyleSet, FontWeights } from "office-ui-fabric-react/lib/Styling"
+import { TextField } from "office-ui-fabric-react/lib/TextField"
+import { Stack } from "office-ui-fabric-react/lib/Stack"
+import { Text } from "office-ui-fabric-react/lib/Text"
+import { emissionFactors } from "../EmissionFactors"
 
 
 const sectionSubtitleStyle = {
@@ -53,7 +53,7 @@ class TravelAtEvent extends React.Component {
 
   componentDidMount() {
     const initState = this.props.getInitState()
-    if (initState['attendees']) {
+    if (initState["attendees"]) {
       this.setState(initState)
     }
   }
