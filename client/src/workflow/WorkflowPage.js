@@ -17,12 +17,13 @@ import { default as ROPoly } from 'resize-observer-polyfill'
 
 import TravelToEvent from './TravelToEvent'
 import TravelAtEvent from './TravelAtEvent'
+import Accommodation from './Accommodation'
 import Results from './Results'
 
 
 const pageStyle = { 
-  paddingLeft: 30, 
-  paddingRight: 30,
+  paddingLeft: 10, 
+  paddingRight: 10,
   paddingTop: 10
 }
 
@@ -50,6 +51,10 @@ class WorkflowPage extends React.Component {
       // state of each section is saved here so they persist as user switches pivot
       'travelToEvent': {},
       'travelAtEvent': {},
+      'accom': {},
+      'meals': {},
+      'spaces': {},
+      'materialsServices': {},
 
       // Wizard navigation
       wizardProps: {
@@ -216,13 +221,17 @@ class WorkflowPage extends React.Component {
       },
       {
         id: '2',
-        label: 'Accomodation',
+        label: 'Accommodation',
         onClickStep: this.handleClickStep,
         state: SubwayNavNodeState.NotStarted,
         footerElement: inBetweenFooter,
         wizardContent: {
-          contentTitleElement: this.getContentTitleElement('Accomodation'),
-          content: <div>Not yet implemented</div>
+          contentTitleElement: this.getContentTitleElement('Accommodation'),
+          content: <Accommodation 
+            getInitState={this.getInitState.bind(this, 'accom')}
+            saveSectionState={this.saveSectionState.bind(this, 'accom')}
+            recordEmissionFromSection={this.recordEmissionFromSection.bind(this, 'accom')}
+          />
         }
       },
       {
@@ -295,6 +304,8 @@ class WorkflowPage extends React.Component {
         return this.state.travelToEvent
       case 'travelAtEvent':
         return this.state.travelAtEvent
+      case 'accom': 
+        return this.state.accom
       default:
         console.warn('getInitState default case hit')
     }
@@ -335,7 +346,7 @@ class WorkflowPage extends React.Component {
 
     const tokens = {
       stackTokens: {
-        childrenGap: 20
+        childrenGap: 10
       }
     }
 
@@ -344,7 +355,8 @@ class WorkflowPage extends React.Component {
         <DefaultButton text="Restart" onClick={this.handleClickRevisitIntroduction}/>
 
         <Stack horizontal tokens={tokens.stackTokens}>
-          <Stack.Item grow={4} styles={stackItemStyles}>
+        
+          <Stack.Item grow={5} styles={stackItemStyles}>
             <div style={wizardStyles}>
               <FullPageWizard
                 // If you need to support browsers that don't have Resize Observer like IE11 or Safari,
