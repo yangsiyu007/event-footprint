@@ -24,19 +24,28 @@ const emissionFactors = {
 
     // Hotel sheet, column G
     // Electricity consumption (MWh per room per night)
+    // Emission needs to be calculated using the factor of the specific electricity region
     electricity_uppper_upscale: 0.044878082,
     electricity_upscale: 0.034510466,
     electricity_midscale_w_food_beverage: 0.029780603,
     electricity_midscale_wo_food_beverage: 0.019102192,
     electricity_economy_and_budget: 0.015111918,
 
+    // Hotel sheet, column K
+    // Natural gas (tCO2e per room per night)
+    ng_uppper_upscale: 0.0065,
+    ng_upscale: 0.0050,
+    ng_midscale_w_food_beverage: 0.0052,
+    ng_midscale_wo_food_beverage: 0.0032,
+    ng_economy_and_budget: 0.0033,
+
     // Hotel sheet, column Q
-    // Total FERA
-    fera_uppper_upscale: 0.003187215,
-    fera_upscale: 0.002452564,
-    fera_midscale_w_food_beverage: 0.002304448,
-    fera_midscale_wo_food_beverage: 0.00144377,
-    fera_economy_and_budget: 0.001314663,
+    // Total FERA emissions (Scope 3 fuel and energy)
+    emi3_uppper_upscale: 0.003187215,
+    emi3_upscale: 0.002452564,
+    emi3_midscale_w_food_beverage: 0.002304448,
+    emi3_midscale_wo_food_beverage: 0.00144377,
+    emi3_economy_and_budget: 0.001314663,
 
   }
 
