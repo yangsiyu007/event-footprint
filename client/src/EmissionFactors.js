@@ -2,7 +2,7 @@
 
 const emissionFactors = {
     // tCO2e per mile, four significant figures
-    // using _ to separate words for easier reading
+    // using _ to separate words for readability
 
     motor_gasoline_passenger: 0.0003832,        // 'EF Hub'!$G$107
     diesel_fuel_medium_heavy_duty: 0.001023,    // 'EF Hub'!$G$102
@@ -21,6 +21,22 @@ const emissionFactors = {
     air_long_haul_premium_econ: 0.2214/ 1000,   // 'DEFRA Air 2018'!$M15/1000
     air_long_haul_business: 0.4013/ 1000,       // 'DEFRA Air 2018'!$M16/1000
     air_long_haul_first: 0.5535/ 1000,          // 'DEFRA Air 2018'!$M17/1000
+
+    // Hotel sheet, column G
+    // Electricity consumption (MWh per room per night)
+    electricity_uppper_upscale: 0.044878082,
+    electricity_upscale: 0.034510466,
+    electricity_midscale_w_food_beverage: 0.029780603,
+    electricity_midscale_wo_food_beverage: 0.019102192,
+    electricity_economy_and_budget: 0.015111918,
+
+    // Hotel sheet, column Q
+    // Total FERA
+    electricity_uppper_upscale: 0.003187215,
+    electricity_upscale: 0.002452564,
+    electricity_midscale_w_food_beverage: 0.002304448,
+    electricity_midscale_wo_food_beverage: 0.00144377,
+    electricity_economy_and_budget: 0.001314663,
 
   }
 

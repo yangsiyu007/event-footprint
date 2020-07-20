@@ -6,9 +6,6 @@ import { Text } from 'office-ui-fabric-react/lib/Text'
 import { emissionFactors } from '../EmissionFactors'
 import { Separator } from 'office-ui-fabric-react/lib/Separator'
 
-const sectionHeaderStyle = {
-  root: { marginTop: 30, marginBottom: 10 }
-}
 
 const sectionSubtitleStyle = {
   root: { marginBottom: 20 }
@@ -559,7 +556,6 @@ class TravelToEvent extends React.Component {
 
     return (
       <div>
-        <Text block variant='large' styles={sectionHeaderStyle}>Travel to the Event</Text>
         <Text block styles={sectionSubtitleStyle}>Travel to the town of the event. Note that Microsoft employees' flights have already been offset if they booked their flights using the internal tool. In in the Number of attendees field below, exclude Microsoft employees traveling by flight and attendees local to the area.</Text>
 
         <TextField

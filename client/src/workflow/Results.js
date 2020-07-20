@@ -5,7 +5,7 @@ import { Text } from 'office-ui-fabric-react/lib/Text'
 
 
 const sectionHeaderStyle = {
-  root: { marginTop: 30, marginBottom: 10 }
+  root: { marginTop: 10, marginBottom: 10 }
 }
 
 const sectionStyle = {
@@ -13,11 +13,11 @@ const sectionStyle = {
 }
 
 const headerColStyle = {
-  root: { width: 150, fontWeight: FontWeights.semibold }
+  root: { width: 140, fontWeight: FontWeights.semibold }
 }
 
 const totalRowStyle = {
-  root: { width: 150, fontWeight: FontWeights.bold }
+  root: { width: 140, fontWeight: FontWeights.bold }
 }
 
 class Results extends React.Component {

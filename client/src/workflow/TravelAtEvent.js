@@ -6,10 +6,6 @@ import { Text } from 'office-ui-fabric-react/lib/Text'
 import { emissionFactors } from '../EmissionFactors'
 
 
-const sectionHeaderStyle = {
-  root: { marginTop: 30, marginBottom: 10 }
-}
-
 const sectionSubtitleStyle = {
   root: { marginBottom: 20 }
 }
@@ -66,10 +62,7 @@ class TravelAtEvent extends React.Component {
     this.props.saveSectionState(this.state)
   }
 
-
   render() {
-
-    // TODO what does tCO2e mean?
 
     // travel local
     const total_percent = this.state.car_percent + this.state.bus_percent + this.state.lightrail_percent
@@ -232,7 +225,6 @@ class TravelAtEvent extends React.Component {
 
     return (
       <div>
-        <Text block variant='large' styles={sectionHeaderStyle}>Local Travel at Event</Text>
         <Text block styles={sectionSubtitleStyle}>Travel associated with attending the event from their accomodation</Text>
 
         {numTripsSection}
@@ -245,4 +237,3 @@ class TravelAtEvent extends React.Component {
 }
   
 export default TravelAtEvent
-
