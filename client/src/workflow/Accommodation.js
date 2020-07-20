@@ -18,9 +18,6 @@ const sectionStyle = {
 const headerColStyle = {
   root: { width: 130, fontWeight: FontWeights.semibold }
 }
-const colStyle = {
-  root: { width: 130 }
-}
 
 const emptyCol = <div style={{width: 130}}></div>
 
@@ -150,7 +147,6 @@ class Accommodation extends React.Component {
         <Stack horizontal >
           <Text block styles={headerColStyle} >Hotel type</Text>
           <Text block styles={headerColStyle} >% room nights</Text>
-          <Text block styles={headerColStyle} > </Text>
           <Text block styles={headerColStyle} >Room nights</Text>
           <Text block styles={headerColStyle} >Scope 1 and 2 (tCO2e)</Text>
           <Text block styles={headerColStyle} >Scope 3 energy (tCO2e)</Text>
@@ -165,7 +161,6 @@ class Accommodation extends React.Component {
             onChange={this.onChange}
             styles={{ fieldGroup: { width: 100 }, root: { marginRight: 30} }}
           />
-          {emptyCol}
           <TextField
             readOnly disabled={true}
             value={upper_upscale_nights}
@@ -196,7 +191,6 @@ class Accommodation extends React.Component {
             onChange={this.onChange}
             styles={{ fieldGroup: { width: 100 }, root: { marginRight: 30} }}
           />
-          {emptyCol}
           <TextField
             readOnly disabled={true}
             value={upscale_nights}
@@ -220,14 +214,43 @@ class Accommodation extends React.Component {
         </Stack>
 
         <Stack horizontal >
-          <Text block styles={headerColStyle} >Midscale with food and beverage</Text>
+          <Text block styles={headerColStyle} >Midscale with food</Text>
           <TextField
             name="upper_upscale_percent"
             value={this.state.midscale_w_food_beverage_percent}
             onChange={this.onChange}
             styles={{ fieldGroup: { width: 100 }, root: { marginRight: 30} }}
           />
-          {emptyCol}
+          <TextField
+            readOnly disabled={true}
+            value={midscale_w_food_beverage_nights}
+            styles={{ fieldGroup: { width: 100 }, root: { marginRight: 30} }}
+          />
+          <TextField
+            readOnly disabled={true}
+            value={midscale_w_food_beverage_emi12}
+            styles={{ fieldGroup: { width: 100 }, root: { marginRight: 30} }}
+          />
+          <TextField
+            readOnly disabled={true}
+            value={midscale_w_food_beverage_emi3}
+            styles={{ fieldGroup: { width: 100 }, root: { marginRight: 30} }}
+          />
+          <TextField
+            readOnly disabled={true}
+            value={midscale_w_food_beverage_emi}
+            styles={{ fieldGroup: { width: 100 }, root: { marginRight: 30} }}
+          />
+        </Stack>
+
+        <Stack horizontal >
+          <Text block styles={headerColStyle} >Midscale without food</Text>
+          <TextField
+            name="upper_upscale_percent"
+            value={this.state.midscale_wo_food_beverage_percent}
+            onChange={this.onChange}
+            styles={{ fieldGroup: { width: 100 }, root: { marginRight: 30} }}
+          />
           <TextField
             readOnly disabled={true}
             value={midscale_wo_food_beverage_nights}
@@ -246,6 +269,36 @@ class Accommodation extends React.Component {
           <TextField
             readOnly disabled={true}
             value={midscale_wo_food_beverage_emi}
+            styles={{ fieldGroup: { width: 100 }, root: { marginRight: 30} }}
+          />
+        </Stack>
+
+        <Stack horizontal >
+          <Text block styles={headerColStyle} >Economy and budget</Text>
+          <TextField
+            name="upper_upscale_percent"
+            value={this.state.economy_and_budget_percent}
+            onChange={this.onChange}
+            styles={{ fieldGroup: { width: 100 }, root: { marginRight: 30} }}
+          />
+          <TextField
+            readOnly disabled={true}
+            value={economy_and_budget_nights}
+            styles={{ fieldGroup: { width: 100 }, root: { marginRight: 30} }}
+          />
+          <TextField
+            readOnly disabled={true}
+            value={economy_and_budget_emi12}
+            styles={{ fieldGroup: { width: 100 }, root: { marginRight: 30} }}
+          />
+          <TextField
+            readOnly disabled={true}
+            value={economy_and_budget_emi3}
+            styles={{ fieldGroup: { width: 100 }, root: { marginRight: 30} }}
+          />
+          <TextField
+            readOnly disabled={true}
+            value={economy_and_budget_emi}
             styles={{ fieldGroup: { width: 100 }, root: { marginRight: 30} }}
           />
         </Stack>
